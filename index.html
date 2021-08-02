@@ -1,0 +1,169 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-07-09 20:28:47
+ * @LastEditTime: 2021-07-10 18:50:47
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \网页训练\ss.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="搜索名"/>
+    <meta name="description" content="详细" />
+    <title>韩道佳</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        li{
+            list-style: none;
+        }
+        div.t1{
+            position: relative;
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f6f6f6;
+        }
+        div img{
+            width: 460px;
+            height: 300px;
+        }
+        div input{
+            outline: none;
+        }
+        table tr{
+            line-height: 40px;
+        }
+        textarea{
+            position: absolute;
+            top: 194px;left: 93px;
+            width: 338px;
+            height: 169px;
+            outline: none;
+            border:  0;
+            background-color: transparent;
+            text-align: justify;
+        }
+        input[type="button"]{
+            position: absolute;
+            right: 10px;bottom:10px;
+        }
+        div.t2{
+            width: 500px;
+            margin: 10px auto;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: rgb(110, 224, 255);
+        }
+        div.t2 ul li{
+            padding: 5px;
+            margin-bottom: 10px;
+            background-color: rgb(226, 226, 226);
+        }
+        div.t2 ul li:last-child{
+            margin-bottom: 0;
+        }
+        div.t2 ul li b{
+            margin-right: 20px;
+        }
+        div.t2 ul li p{
+            font-size: 12px;
+            margin-top: 5px;
+            line-height: 16px;
+        }
+        div.t2 ul li .ts{
+            font-size: 12px;
+            color:rgb(108, 108, 108);
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="t1">
+        <form action="#" method="post">
+            <table>
+                <tr>
+                    <td>姓名：</td>
+                    <td><input type="text" name="name" id="name"></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td>
+                        <label><span>男&nbsp;</span><input type="radio" name='xb' value="男" checked="checked"></label>
+                        <label><span>女&nbsp;</span><input type="radio" name='xb' value="女"></label>
+                    </td>
+                </tr>
+            </table>
+            <textarea name="liuyan" id="" placeholder="请留言" autofocus></textarea>
+            <input type="button" value="提交" id="btn">
+        </form>
+        <img src="./images/1157fc58bcc5bcd.jpg" alt="">
+        
+    </div>
+    <div class="t2">
+        <ul id="ul">
+            <li>
+                <b>肖战</b><span class='xb'>男</span><span class='ts'>03-08 19:03:22</span><br>
+                <p>我好帅</p>
+            </li>
+        </ul>
+    </div>
+</body>
+    <script>
+        var Name = document.getElementById("name");
+        var sex = document.getElementsByName("xb")
+        var btn = document.getElementById("btn");
+        var ul1 = document.getElementById("ul");
+        var ly = document.querySelector('textarea');
+        btn.onclick = function() {
+            let aa = Name.value;
+            let bb = "";
+            let dd = ly.value;
+            for(var i =0; i<sex.length; i++){
+                if(sex[i].checked){
+                bb = sex[i].value;
+                }
+            }
+            let li1 = ul1.children[0].cloneNode(true);
+            let name1 = li1.querySelector('b');
+            let sex1 = li1.querySelector('.xb');
+            let tss = li1.querySelector('.ts');
+            let ps = li1.querySelector('p');
+            name1.innerHTML ='';
+            sex1.innerHTML ='';
+            tss.innerHTML ='';
+            ps.innerHTML ='';
+            if(aa == ''){
+                name1.innerHTML = "***"
+            }
+            else{
+                name1.innerHTML = aa;
+                Name.value = '';
+                ly.value = '';
+            }
+            sex1.innerHTML = bb;
+            tss.innerHTML = sj();
+            ps.innerHTML =dd;
+            ul1.appendChild(li1);
+        }
+
+        function sj(){
+            var Sj =new Date();
+            let m = Sj.getMonth();
+            m=m<10?'0'+m:m;
+            let d = Sj.getDate();
+            d=d<10?'0'+d:d;
+            let h = Sj.getHours();
+            h=h<10?'0'+h:h;
+            let m1 = Sj.getMinutes();
+            m1=m1<10?'0'+m1:m1;
+            let s = Sj.getSeconds();
+            s=s<10?'0'+s:s;
+            return m+'-'+d+' '+h+':'+m1+':'+s;
+        }
+    </script>
+</html>
